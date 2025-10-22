@@ -55,7 +55,7 @@ const GetInvolved = () => {
         <AnimatePresence>
           {showDonate && (
             <motion.div
-              className="fixed inset-0 bg-black/60 flex justify-center items-center z-[9999] "
+              className="fixed inset-0 bg-black/60 flex justify-center items-center z-[9999] px-4 "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
