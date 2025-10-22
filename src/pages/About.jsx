@@ -2,6 +2,7 @@ import AboutHero from "../components/About/AboutHero";
 import WhatWeBelieve from "../components/About/WhatWeBelieve";
 import FourPillars from "../components/About/FourPillars";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -33,18 +34,18 @@ const About = () => {
             mission to make science exciting and inclusive.
           </motion.p>
           <div className="flex flex-col sm:flex-row gap-5">
-            <a
-              href="/get-involved"
+            <Link
+              to="/get-involved"
               className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-orange to-cso-yellow shadow hover:scale-105 transition-transform duration-200 text-center"
             >
               Explore Our Work
-            </a>
-            <a
-              href="/support"
+            </Link>
+            <Link
+              to="/get-involved"
               className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-celtic-blue to-cso-crystal-blue shadow hover:scale-105 transition-transform duration-200 text-center"
             >
               Get Involved Today
-            </a>
+            </Link>
           </div>
         </div>
       </section>

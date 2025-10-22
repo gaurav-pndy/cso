@@ -60,7 +60,7 @@ export default function Header() {
           })}
           <button
             onClick={() => setShowDonate(true)}
-            className="ml-1 px-4 py-2 rounded-lg bg-gradient-to-r from-cso-orange to-cso-yellow text-white font-bold shadow-md hover:scale-105 transition-transform"
+            className="ml-1 px-4 py-2 rounded-lg bg-gradient-to-r from-cso-orange to-cso-yellow text-white font-bold shadow-md hover:scale-105 transition-transform cursor-pointer"
           >
             Donate Now
           </button>
@@ -121,7 +121,7 @@ export default function Header() {
               setMobileOpen(false);
               setShowDonate(true);
             }}
-            className="block px-3 py-2 rounded-lg bg-gradient-to-r from-cso-orange to-cso-yellow text-white font-bold shadow-md text-center mt-2"
+            className="block px-3 py-2 rounded-lg bg-gradient-to-r from-cso-orange to-cso-yellow text-white font-bold shadow-md text-center mt-2 cursor-pointer"
           >
             Donate Now
           </button>

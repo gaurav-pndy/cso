@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function CTA() {
   return (
@@ -24,18 +25,18 @@ export default function CTA() {
           education, there's a place for you in our mission.
         </motion.p>
         <div className="flex flex-col sm:flex-row gap-5">
-          <a
-            href="/get-involved"
+          <Link
+            to="/get-involved"
             className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-orange to-cso-yellow shadow hover:scale-105 transition-transform duration-200 text-center"
           >
             Get Involved
-          </a>
-          <a
-            href="/support"
+          </Link>
+          <Link
+            to="/support"
             className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-celtic-blue to-cso-crystal-blue shadow hover:scale-105 transition-transform duration-200 text-center"
           >
             Support Our Cause
-          </a>
+          </Link>
         </div>
       </div>
     </section>

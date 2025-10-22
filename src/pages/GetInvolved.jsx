@@ -4,6 +4,7 @@ import KeyBenefits from "../components/GetInvolved/KeyBenefits";
 import Section1 from "../components/GetInvolved/Section1";
 import WaysToSupport from "../components/GetInvolved/WaysToSupport";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const GetInvolved = () => {
   const [showDonate, setShowDonate] = useState(false);
@@ -37,15 +38,15 @@ const GetInvolved = () => {
             generation of innovators.
           </motion.p>
           <div className="flex flex-col sm:flex-row gap-5">
-            <a
-              href="/get-involved"
+            <Link
+              to="/get-involved"
               className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-orange to-cso-yellow shadow hover:scale-105 transition-transform duration-200 text-center"
             >
               Volunteer With Us
-            </a>
+            </Link>
             <button
               onClick={() => setShowDonate(true)}
-              className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-celtic-blue to-cso-crystal-blue shadow hover:scale-105 transition-transform duration-200 text-center"
+              className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-celtic-blue to-cso-crystal-blue shadow hover:scale-105 transition-transform duration-200 text-center cursor-pointer"
             >
               Donate Now
             </button>

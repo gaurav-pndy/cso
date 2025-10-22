@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { FaSyncAlt, FaChild, FaFlask, FaToolbox } from "react-icons/fa";
 
 const donationOptions = [
@@ -49,6 +50,8 @@ const donationOptions = [
 ];
 
 export default function WaysToSupport() {
+  const [showDonate, setShowDonate] = useState(false);
+
   return (
     <section className="w-full bg-white py-16 ">
       <div className="max-w-7xl mx-auto px-4">
@@ -103,17 +106,50 @@ export default function WaysToSupport() {
                 <p className="font-roboto text-xl font-semibold text-cso-indigo mb-6">
                   {option.amount}
                 </p>
-                <a
-                  href={option.buttonLink}
-                  className={`inline-block w-full text-center py-3 rounded-lg font-roboto font-bold text-white bg-gradient-to-r ${option.bgGradient} hover:scale-105 transition-transform duration-200`}
+                <button
+                  onClick={() => setShowDonate(true)}
+                  className={`inline-block w-full text-center py-3 rounded-lg cursor-pointer font-roboto font-bold text-white bg-gradient-to-r ${option.bgGradient} hover:scale-105 transition-transform duration-200`}
                 >
                   {option.buttonLabel}
-                </a>
+                </button>
               </motion.div>
             );
           })}
         </div>
       </div>
+      <AnimatePresence>
+        {showDonate && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 flex justify-center items-center z-[9999] px-4 "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="bg-white overflow-hidden rounded-2xl shadow-2xl max-w-3xl w-full relative"
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <button
+                onClick={() => setShowDonate(false)}
+                className="absolute top-3 right-7 text-gray-600 hover:text-black text-3xl font-bold"
+              >
+                ×
+              </button>
+              <iframe
+                width="100%"
+                height="700"
+                src="https://zohosecurepay.in/checkout/fq35wqxe-8t0it3x73g4s1/Donate-Now"
+                style={{ border: "none" }}
+                title="Donate Now"
+              ></iframe>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

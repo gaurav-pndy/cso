@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ImpactHero from "../components/ImpactStories/ImpactHero";
 import Stories from "../components/ImpactStories/Stories";
 import TransformationTypes from "../components/ImpactStories/TransformationTypes";
@@ -32,18 +33,18 @@ const ImpactStories = () => {
             science and technology.
           </motion.p>
           <div className="flex flex-col sm:flex-row gap-5">
-            <a
-              href="/get-involved"
+            <Link
+              to="/get-involved"
               className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-orange to-cso-yellow shadow hover:scale-105 transition-transform duration-200 text-center"
             >
               Support a Student
-            </a>
-            <a
-              href="/support"
-              className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-celtic-blue to-cso-crystal-blue shadow hover:scale-105 transition-transform duration-200 text-center"
+            </Link>
+            <Link
+              to="/support"
+              className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-celtic-blue to-cso-crystal-blue shadow hover:scale-105 transition-transform duration-200 text-center cursor-pointer"
             >
               Share Your Story
-            </a>
+            </Link>
           </div>
         </div>
       </section>
