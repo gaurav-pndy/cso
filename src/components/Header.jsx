@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -15,13 +15,14 @@ const navLinks = [
 export default function Header() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showDonate, setShowDonate] = useState(false);
 
   const toggleMobileMenu = () => setMobileOpen((open) => !open);
 
   return (
     <header className="w-full fixed top-0 border-b border-cso-light-grey z-50 bg-white shadow-none">
       <motion.nav
-        className="max-w-7xl mx-auto flex items-center justify-between px-4 "
+        className="max-w-7xl mx-auto flex items-center justify-between px-4"
         initial={{ opacity: 0, y: -24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -57,12 +58,12 @@ export default function Header() {
               </Link>
             );
           })}
-          <a
-            href="/donate"
+          <button
+            onClick={() => setShowDonate(true)}
             className="ml-1 px-4 py-2 rounded-lg bg-gradient-to-r from-cso-orange to-cso-yellow text-white font-bold shadow-md hover:scale-105 transition-transform"
           >
             Donate Now
-          </a>
+          </button>
         </div>
 
         {/* Mobile Toggle Button */}
@@ -115,14 +116,52 @@ export default function Header() {
               </Link>
             );
           })}
-          <a
-            href="/donate"
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              setShowDonate(true);
+            }}
             className="block px-3 py-2 rounded-lg bg-gradient-to-r from-cso-orange to-cso-yellow text-white font-bold shadow-md text-center mt-2"
           >
             Donate Now
-          </a>
+          </button>
         </nav>
       </motion.div>
+
+      {/* Animated Donate Modal */}
+      <AnimatePresence>
+        {showDonate && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 flex justify-center items-center z-[9999] p-4 pt-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-4 relative"
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <button
+                onClick={() => setShowDonate(false)}
+                className="absolute top-3 right-4 text-gray-600 hover:text-black text-3xl font-bold"
+              >
+                ×
+              </button>
+              <iframe
+                width="100%"
+                height="600"
+                src="https://zohosecurepay.in/checkout/fq35wqxe-8t0it3x73g4s1/Donate-Now"
+                style={{ border: "none" }}
+                title="Donate Now"
+              ></iframe>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

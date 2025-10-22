@@ -1,10 +1,13 @@
+import { useState } from "react";
 import GetStarted from "../components/GetInvolved/GetStarted";
 import KeyBenefits from "../components/GetInvolved/KeyBenefits";
 import Section1 from "../components/GetInvolved/Section1";
 import WaysToSupport from "../components/GetInvolved/WaysToSupport";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const GetInvolved = () => {
+  const [showDonate, setShowDonate] = useState(false);
+
   return (
     <div>
       <Section1 />
@@ -40,14 +43,48 @@ const GetInvolved = () => {
             >
               Volunteer With Us
             </a>
-            <a
-              href="/support"
+            <button
+              onClick={() => setShowDonate(true)}
               className="px-10 py-3 rounded-lg font-roboto text-lg font-semibold text-white bg-gradient-to-r from-cso-celtic-blue to-cso-crystal-blue shadow hover:scale-105 transition-transform duration-200 text-center"
             >
               Donate Now
-            </a>
+            </button>
           </div>
         </div>
+
+        <AnimatePresence>
+          {showDonate && (
+            <motion.div
+              className="fixed inset-0 bg-black/60 flex justify-center items-center z-[9999] p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-4 pt-12 relative"
+                initial={{ scale: 0.8, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <button
+                  onClick={() => setShowDonate(false)}
+                  className="absolute top-3 right-4 text-gray-600 hover:text-black text-3xl font-bold"
+                >
+                  ×
+                </button>
+                <iframe
+                  width="100%"
+                  height="600"
+                  src="https://zohosecurepay.in/checkout/fq35wqxe-8t0it3x73g4s1/Donate-Now"
+                  style={{ border: "none" }}
+                  title="Donate Now"
+                ></iframe>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
     </div>
   );
