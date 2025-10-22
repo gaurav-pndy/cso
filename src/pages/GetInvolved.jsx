@@ -55,14 +55,14 @@ const GetInvolved = () => {
         <AnimatePresence>
           {showDonate && (
             <motion.div
-              className="fixed inset-0 bg-black/60 flex justify-center items-center z-[9999] p-4"
+              className="fixed inset-0 bg-black/60 flex justify-center items-center z-[9999] "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
               <motion.div
-                className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-4 pt-12 relative"
+                className="bg-white overflow-hidden rounded-2xl shadow-2xl max-w-3xl w-full relative"
                 initial={{ scale: 0.8, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -70,13 +70,13 @@ const GetInvolved = () => {
               >
                 <button
                   onClick={() => setShowDonate(false)}
-                  className="absolute top-3 right-4 text-gray-600 hover:text-black text-3xl font-bold"
+                  className="absolute top-3 right-7 text-gray-600 hover:text-black text-3xl font-bold"
                 >
                   ×
                 </button>
                 <iframe
                   width="100%"
-                  height="600"
+                  height="700"
                   src="https://zohosecurepay.in/checkout/fq35wqxe-8t0it3x73g4s1/Donate-Now"
                   style={{ border: "none" }}
                   title="Donate Now"
